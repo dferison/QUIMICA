@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS6 - Água Potável e Saneamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <style>/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #00bcd4;
+    margin-bottom: 0.2rem;
+}
+
+.logo span {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    color: #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.quiz-nav {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.quiz-nav:hover {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #00bcd4;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 188, 212, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.hero-info {
+    margin-bottom: 4rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.info-card {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-5px);
+}
+
+.quiz-card {
+    background: linear-gradient(135deg, rgba(0, 188, 212, 0.2), rgba(0, 151, 167, 0.2));
+    border-color: #00bcd4;
+}
+
+.info-icon {
+    font-size: 3rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.info-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.quiz-btn-hero {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+.quiz-btn-hero:hover {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #00bcd4;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Problema Section */
+.problema-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.problema-card {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.problema-card:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-header i {
+    font-size: 2rem;
+    color: #00bcd4;
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.card-content p {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.card-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card-content li {
+    color: #ffffff;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.card-content li:before {
+    content: "•";
+    color: #00bcd4;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.card-content li:last-child {
+    border-bottom: none;
+}
+
+/* Química Section */
+.quimica-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.quimica-card {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.quimica-card:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: #00bcd4;
+    margin-bottom: 1.5rem;
+}
+
+.quimica-card h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.quimica-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.process-list {
+    text-align: left;
+}
+
+.process-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.process-item:last-child {
+    border-bottom: none;
+}
+
+.process-item i {
+    color: #00bcd4;
+    font-size: 1.1rem;
+}
+
+.process-item span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* EPIs Section */
+.epis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.epi-item {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.epi-item:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-5px);
+}
+
+.epi-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.epi-item h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.epi-item p {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Soluções Section */
+.solucoes-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.materiais-section h3,
+.componentes-section h3 {
+    font-size: 1.8rem;
+    color: #00bcd4;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.materiais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.material-item {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.material-item:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-3px);
+}
+
+.material-icon {
+    font-size: 2rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+.material-item h4 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.material-item p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.componentes-list {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.componente-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.componente-item:last-child {
+    border-bottom: none;
+}
+
+.componente-item i {
+    color: #00bcd4;
+}
+
+.componente-item span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Processo Section */
+.processo-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+}
+
+.timeline-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.timeline-content {
+    flex: 1;
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.timeline-content h3 {
+    color: #00bcd4;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Resultados Section */
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.resultado-card {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.resultado-card:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-5px);
+}
+
+.resultado-icon {
+    font-size: 3rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+.resultado-card h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.resultado-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.alertas-section {
+    margin-top: 4rem;
+}
+
+.alertas-section h3 {
+    font-size: 1.8rem;
+    color: #00bcd4;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.alertas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.alerta-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 193, 7, 0.1);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.alerta-item i {
+    color: #ffc107;
+    font-size: 1.5rem;
+}
+
+.alerta-item p {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Quiz Section */
+.quiz-section {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+.quiz-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.quiz-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.quiz-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 10px;
+}
+
+.quiz-feature i {
+    font-size: 2rem;
+    color: #00bcd4;
+}
+
+.quiz-feature span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.quiz-start-btn {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1.5rem 3rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.quiz-start-btn:hover {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.4);
+}
+
+/* Criadores Section */
+.criadores-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.coordenadora,
+.professora {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.coord-header,
+.prof-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.coord-header i,
+.prof-header i {
+    color: #00bcd4;
+    font-size: 1.5rem;
+}
+
+.coord-header h3,
+.prof-header h3 {
+    color: #00bcd4;
+    font-size: 1.3rem;
+}
+
+.coord-info h4,
+.prof-info h4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.coord-info p,
+.prof-info p {
+    color: #e0e0e0;
+}
+
+.estudantes {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.estudantes h3 {
+    color: #00bcd4;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+.estudantes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.estudante-item {
+    background: rgba(0, 188, 212, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.instituicao {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(0, 188, 212, 0.3);
+}
+
+.instituicao p {
+    color: #e0e0e0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Conclusão Section */
+.conclusao-section {
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    text-align: center;
+}
+
+.conclusao-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 800;
+}
+
+.conclusao-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conclusao-highlight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.conclusao-highlight i {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.conclusao-highlight span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Contato Section */
+.contato-section {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+.contato-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contato-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contato-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.contato-info .info-item i {
+    font-size: 2rem;
+    color: #00bcd4;
+}
+
+.contato-info .info-item h3 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.contato-info .info-item p {
+    color: #e0e0e0;
+}
+
+/* Footer */
+.footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(0, 188, 212, 0.3);
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo h3 {
+    color: #00bcd4;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo p {
+    color: #e0e0e0;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #00bcd4;
+}
+
+.footer-section p {
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.footer-bottom p {
+    color: #888;
+}
+
+/* Quiz Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    border: 2px solid #00bcd4;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+.modal-header h3 {
+    color: #00bcd4;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    color: #00bcd4;
+}
+
+.quiz-body {
+    padding: 2rem;
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00bcd4, #0097a7);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+#quiz-counter {
+    color: #00bcd4;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.quiz-question {
+    background: rgba(0, 188, 212, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #00bcd4;
+}
+
+.quiz-question h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quiz-option:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+.quiz-option.selected {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+}
+
+.quiz-option.correct {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.quiz-option.incorrect {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.2);
+}
+
+.option-letter {
+    width: 40px;
+    height: 40px;
+    background: #00bcd4;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.quiz-option.correct .option-letter {
+    background: #4caf50;
+}
+
+.quiz-option.incorrect .option-letter {
+    background: #f44336;
+}
+
+.option-text {
+    flex: 1;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quiz-btn {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+.quiz-btn:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    border: 2px solid #00bcd4;
+}
+
+.quiz-result h3 {
+    color: #00bcd4;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.quiz-message {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.quiz-restart {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0.5rem;
+}
+
+.quiz-restart:hover {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-stats {
+        gap: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .problema-grid,
+    .quimica-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .solucoes-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .materiais-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .quiz-body {
+        padding: 1rem;
+    }
+
+    .quiz-question {
+        padding: 1.5rem;
+    }
+
+    .quiz-option {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .epis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-info {
+        grid-template-columns: 1fr;
+    }
+
+    .estudantes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Quiz Inline Styles */
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quiz-content {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+.quiz-header h3 {
+    color: #00bcd4;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00bcd4, #0097a7);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+#quiz-counter-inline {
+    color: #00bcd4;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.quiz-question {
+    background: rgba(0, 188, 212, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #00bcd4;
+}
+
+.quiz-question h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quiz-option:hover {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+.quiz-option.selected {
+    border-color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+}
+
+.quiz-option.correct {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.quiz-option.incorrect {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.2);
+}
+
+.option-letter {
+    width: 40px;
+    height: 40px;
+    background: #00bcd4;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.quiz-option.correct .option-letter {
+    background: #4caf50;
+}
+
+.quiz-option.incorrect .option-letter {
+    background: #f44336;
+}
+
+.option-text {
+    flex: 1;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quiz-btn {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+.quiz-btn:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.quiz-explanation {
+    background: rgba(0, 188, 212, 0.1);
+    border: 2px solid rgba(0, 188, 212, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    border: 2px solid #00bcd4;
+    margin-top: 2rem;
+}
+
+.quiz-result h3 {
+    color: #00bcd4;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.quiz-message {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.quiz-restart {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0.5rem;
+}
+
+.quiz-restart:hover {
+    background: linear-gradient(45deg, #0097a7, #00838f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+
+
+
+/* NR do Dia Section */
+.nr-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.nr-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.nr-container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nr-intro {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.nr-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.nr-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.nr-feature:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nr-feature i {
+    font-size: 2.5rem;
+    color: #00d4ff;
+    margin-bottom: 0.5rem;
+}
+
+.nr-feature span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.nr-start-btn {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.nr-start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+    background: linear-gradient(135deg, #0099cc 0%, #00d4ff 100%);
+}
+
+.nr-start-btn i {
+    font-size: 1.3rem;
+}
+
+.nr-content {
+    padding: 2rem 0;
+}
+
+.nr-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.nr-header {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nr-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+}
+
+.nr-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+}
+
+.nr-status i {
+    color: #00ff88;
+}
+
+.nr-body {
+    padding: 2.5rem;
+}
+
+.nr-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #00d4ff;
+    line-height: 1.3;
+}
+
+.nr-description {
+    margin-bottom: 2.5rem;
+}
+
+.nr-description p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nr-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nr-link-btn {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
+    flex: 1;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.nr-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 255, 136, 0.4);
+    background: linear-gradient(135deg, #00cc6a 0%, #00ff88 100%);
+    text-decoration: none;
+    color: white;
+}
+
+.nr-new-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+    flex: 1;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.nr-new-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+    background: linear-gradient(135deg, #ee5a52 0%, #ff6b6b 100%);
+}
+
+/* Estilo especial para NRs revogadas */
+.nr-card.revogada .nr-header {
+    background: linear-gradient(135deg, #666 0%, #444 100%);
+}
+
+.nr-card.revogada .nr-status {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nr-card.revogada .nr-status i {
+    color: #ff6b6b;
+}
+
+.nr-card.revogada .nr-status span {
+    color: #ff6b6b;
+}
+
+.nr-card.revogada .nr-title {
+    color: #ccc;
+}
+
+/* Navegação especial para NR */
+.nav-link.nr-nav {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: white !important;
+    border-radius: 25px;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.2rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link.nr-nav:hover {
+    background: linear-gradient(135deg, #0099cc 0%, #00d4ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Responsividade para NR do Dia */
+@media (max-width: 768px) {
+    .nr-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .nr-feature {
+        padding: 1.5rem;
+    }
+    
+    .nr-feature i {
+        font-size: 2rem;
+    }
+    
+    .nr-start-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .nr-header {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .nr-number {
+        font-size: 2rem;
+    }
+    
+    .nr-body {
+        padding: 2rem 1.5rem;
+    }
+    
+    .nr-title {
+        font-size: 1.5rem;
+    }
+    
+    .nr-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nr-link-btn,
+    .nr-new-btn {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nr-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .nr-feature {
+        padding: 1rem;
+    }
+    
+    .nr-start-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .nr-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .nr-title {
+        font-size: 1.3rem;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ODS6</h1>
+                    <span></span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="nav-link">Início</a></li>
+                        <li><a href="#problema" class="nav-link">Problema</a></li>
+                        <li><a href="#quimica" class="nav-link">Química</a></li>
+                        <li><a href="#epis" class="nav-link">EPIs</a></li>
+                        <li><a href="#solucoes" class="nav-link">Soluções</a></li>
+                        <li><a href="#processo" class="nav-link">Processo</a></li>
+                        <li><a href="#resultados" class="nav-link">Resultados</a></li>
+                        <li><a href="#quiz" class="nav-link quiz-nav">Quiz</a></li>
+                        <li><a href="#criadores" class="nav-link">Criadores</a></li>
+                    </ul>
+                    <button class="nav-toggle" id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-header">
+                    <h1 class="hero-title">ÁGUA LIMPA É SAÚDE E DIGNIDADE</h1>
+                    <p class="hero-subtitle">Soluções acessíveis para tratamento de água de poços artesianos para população rural</p>
+                </div>
+                
+                <div class="hero-info">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <h3>Filtração Natural</h3>
+                            <p>Sistemas de filtragem usando materiais naturais como zeólita, carvão ativado e areia</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Biossegurança</h3>
+                            <p>Protocolos de segurança e EPIs para manuseio seguro da água e materiais</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3>Sustentabilidade</h3>
+                            <p>Soluções ecológicas e de baixo custo para comunidades rurais</p>
+                        </div>
+                        <div class="info-card quiz-card">
+                            <div class="info-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>Teste seus Conhecimentos</h3>
+                            <p>Quiz interativo com 10 perguntas sobre água potável e saneamento</p>
+                            <button class="quiz-btn-hero" onclick="scrollToInlineQuiz()">
+                                <i class="fas fa-play"></i>
+                                Iniciar Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section id="problema" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Por que se preocupar com a qualidade da água?</h2>
+                <p class="section-subtitle">A água é essencial à vida, mas nem sempre é segura</p>
+            </div>
+            
+            <div class="problema-grid">
+                <div class="problema-card">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Água Contaminada</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>A água pode conter microrganismos e substâncias químicas perigosas à saúde.</p>
+                        <ul>
+                            <li>Bactérias (coliformes fecais)</li>
+                            <li>pH desequilibrado</li>
+                            <li>Metais pesados</li>
+                            <li>Turbidez elevada</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="card-header">
+                        <i class="fas fa-microscope"></i>
+                        <h3>Análises</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Estudos mostram contaminação em poços artesianos rurais.</p>
+                        <ul>
+                            <li>Presença de coliformes fecais</li>
+                            <li>Metais pesados acima do limite</li>
+                            <li>pH inadequado para consumo</li>
+                            <li>Alta turbidez da água</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="card-header">
+                        <i class="fas fa-home"></i>
+                        <h3>Zona Rural</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Muitas famílias da zona rural usam poços artesianos, mas nem sempre essa água é segura.</p>
+                        <ul>
+                            <li>Falta de tratamento adequado</li>
+                            <li>Ausência de análises regulares</li>
+                            <li>Desconhecimento dos riscos</li>
+                            <li>Limitações econômicas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Química Section -->
+    <section id="quimica" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">QUÍMICA</h2>
+                <p class="section-subtitle">A ciência por trás do tratamento eficaz da água</p>
+            </div>
+            
+            <div class="quimica-grid">
+                <div class="quimica-card">
+                    <div class="card-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Análise Química</h3>
+                    <p>Identificação de substâncias químicas perigosas, avaliação de turbidez, pH e condutividade para garantir a qualidade da água.</p>
+                    <div class="process-list">
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Medição de pH (acidez/alcalinidade)</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Análise de metais pesados</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Teste de condutividade elétrica</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Avaliação da turbidez</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quimica-card">
+                    <div class="card-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Processos de Filtragem</h3>
+                    <p>Seleção e aplicação de materiais filtrantes adequados baseados em princípios químicos de adsorção e filtração.</p>
+                    <div class="process-list">
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Adsorção por carvão ativado</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Troca iônica com zeólita</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Filtração física por areia</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Barreira natural com terra de automassa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quimica-card">
+                    <div class="card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Controle de Qualidade</h3>
+                    <p>Monitoramento contínuo dos parâmetros químicos para assegurar a eficácia do tratamento e a segurança da água.</p>
+                    <div class="process-list">
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Testes de coliformes fecais</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Análise de resíduos químicos</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Verificação de padrões ANVISA</span>
+                        </div>
+                        <div class="process-item">
+                            <i class="fas fa-check"></i>
+                            <span>Relatórios de qualidade</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EPIs Section -->
+    <section id="epis" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">EQUIPAMENTOS DE PROTEÇÃO INDIVIDUAL</h2>
+                <p class="section-subtitle">Segurança em primeiro lugar durante todo o processo</p>
+            </div>
+            
+            <div class="epis-grid">
+                <div class="epi-item">
+                    <div class="epi-icon">🧤</div>
+                    <h3>Luvas de Borracha</h3>
+                    <p>Protegem contra agentes biológicos e substâncias químicas</p>
+                </div>
+                <div class="epi-item">
+                    <div class="epi-icon">🥽</div>
+                    <h3>Óculos de Proteção</h3>
+                    <p>Evitam respingos de água ou reagentes nos olhos</p>
+                </div>
+                <div class="epi-item">
+                    <div class="epi-icon">😷</div>
+                    <h3>Máscara PFF2</h3>
+                    <p>Protege contra inalação de partículas e microrganismos</p>
+                </div>
+                <div class="epi-item">
+                    <div class="epi-icon">🧥</div>
+                    <h3>Avental de PVC</h3>
+                    <p>Evita contato da água contaminada com roupa e pele</p>
+                </div>
+                <div class="epi-item">
+                    <div class="epi-icon">🥾</div>
+                    <h3>Botas de Borracha</h3>
+                    <p>Impedem contato dos pés com solos ou água contaminada</p>
+                </div>
+                <div class="epi-item">
+                    <div class="epi-icon">⛑️</div>
+                    <h3>Touca Descartável</h3>
+                    <p>Evita que resíduos biológicos contaminem o técnico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções Section -->
+    <section id="solucoes" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SOLUÇÕES SUSTENTÁVEIS</h2>
+                <p class="section-subtitle">Filtro artesanal de baixo custo e alta eficiência</p>
+            </div>
+            
+            <div class="solucoes-content">
+                <div class="materiais-section">
+                    <h3>Materiais Filtrantes</h3>
+                    <div class="materiais-grid">
+                        <div class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <h4>Areia Comum</h4>
+                            <p>Filtra sedimentos e partículas maiores</p>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h4>Carvão Ativado</h4>
+                            <p>Retém impurezas orgânicas e melhora sabor</p>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h4>Zeólita</h4>
+                            <p>Remove metais pesados e amônia</p>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <h4>Terra de Automassa</h4>
+                            <p>Barreira natural final de filtragem</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="componentes-section">
+                    <h3>Componentes do Filtro</h3>
+                    <div class="componentes-list">
+                        <div class="componente-item">
+                            <i class="fas fa-circle"></i>
+                            <span>2 galões de 20L</span>
+                        </div>
+                        <div class="componente-item">
+                            <i class="fas fa-circle"></i>
+                            <span>6 conexões (joelhos/Ts)</span>
+                        </div>
+                        <div class="componente-item">
+                            <i class="fas fa-circle"></i>
+                            <span>1,5m de cano PVC ½"</span>
+                        </div>
+                        <div class="componente-item">
+                            <i class="fas fa-circle"></i>
+                            <span>1 torneira</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Section -->
+    <section id="processo" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PROCESSO DE TRATAMENTO</h2>
+                <p class="section-subtitle">Etapas para garantir água segura e potável</p>
+            </div>
+            
+            <div class="processo-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Coleta de Amostras</h3>
+                        <p>Utilizar frascos esterilizados, evitar contato direto e rotular corretamente</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Transporte Seguro</h3>
+                        <p>Armazenar em caixas térmicas com gelo, transporte rápido até 6 horas</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Análises Laboratoriais</h3>
+                        <p>Seguir protocolos da ANVISA, trabalhar em ambiente controlado</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Montagem do Filtro</h3>
+                        <p>Limpar materiais, montar em local arejado, usar EPIs</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Armazenamento</h3>
+                        <p>Recipientes limpos, protegidos do sol, longe de animais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Section -->
+    <section id="resultados" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">RESULTADOS OBTIDOS</h2>
+                <p class="section-subtitle">Eficácia comprovada do sistema de filtragem</p>
+            </div>
+            
+            <div class="resultados-grid">
+                <div class="resultado-card">
+                    <div class="resultado-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Redução de Turbidez</h3>
+                    <p>Água cristalina e transparente após filtragem</p>
+                </div>
+                <div class="resultado-card">
+                    <div class="resultado-icon">
+                        <i class="fas fa-bacteria"></i>
+                    </div>
+                    <h3>Diminuição de Coliformes</h3>
+                    <p>Eliminação de bactérias nocivas à saúde</p>
+                </div>
+                <div class="resultado-card">
+                    <div class="resultado-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Melhora no pH</h3>
+                    <p>Água com pH adequado para consumo humano</p>
+                </div>
+                <div class="resultado-card">
+                    <div class="resultado-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Água Segura</h3>
+                    <p>Qualidade garantida para consumo das famílias</p>
+                </div>
+            </div>
+            
+            <div class="alertas-section">
+                <h3>Importantes Alertas</h3>
+                <div class="alertas-grid">
+                    <div class="alerta-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Teste sempre a água, mesmo que ela pareça limpa</p>
+                    </div>
+                    <div class="alerta-item">
+                        <i class="fas fa-ban"></i>
+                        <p>Não armazene água em recipientes abertos</p>
+                    </div>
+                    <div class="alerta-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Eduque sua comunidade sobre os riscos da água contaminada</p>
+                    </div>
+                    <div class="alerta-item">
+                        <i class="fas fa-hard-hat"></i>
+                        <p>Use sempre EPIs ao montar ou manusear filtros e amostras</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section quiz-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TESTE SEUS CONHECIMENTOS</h2>
+                <p class="section-subtitle">Quiz interativo sobre água potável e saneamento</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="quiz-intro" id="quiz-intro">
+                    <div class="quiz-info">
+                        <div class="quiz-feature">
+                            <i class="fas fa-question-circle"></i>
+                            <span>10 Perguntas</span>
+                        </div>
+                        <div class="quiz-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Sem Limite de Tempo</span>
+                        </div>
+                        <div class="quiz-feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Pontuação Detalhada</span>
+                        </div>
+                        <div class="quiz-feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Explicações Incluídas</span>
+                        </div>
+                    </div>
+                    <button class="quiz-start-btn" onclick="startInlineQuiz()">
+                        <i class="fas fa-play"></i>
+                        Iniciar Quiz Agora
+                    </button>
+                </div>
+
+                <div class="quiz-content" id="quiz-content" style="display: none;">
+                    <div class="quiz-header">
+                        <h3><i class="fas fa-question-circle"></i> Quiz: Água Potável e Saneamento</h3>
+                        <div class="quiz-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="quiz-progress-inline"></div>
+                            </div>
+                            <span id="quiz-counter-inline">1/10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-body">
+                        <div class="quiz-question" id="quiz-question-inline"></div>
+                        <div class="quiz-options" id="quiz-options-inline"></div>
+                        <div class="quiz-controls">
+                            <button class="quiz-btn" id="quiz-next-inline" onclick="nextInlineQuestion()" disabled>Próxima Pergunta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-result" id="quiz-result-inline" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NR do Dia Section -->
+    <section id="nr-do-dia" class="section nr-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NR DO DIA</h2>
+                <p class="section-subtitle">Descubra uma Norma Regulamentadora aleatória para estudar</p>
+            </div>
+            
+            <div class="nr-container">
+                <div class="nr-intro" id="nr-intro">
+                    <div class="nr-info">
+                        <div class="nr-feature">
+                            <i class="fas fa-book"></i>
+                            <span>38 NRs Disponíveis</span>
+                        </div>
+                        <div class="nr-feature">
+                            <i class="fas fa-random"></i>
+                            <span>Sorteio Aleatório</span>
+                        </div>
+                        <div class="nr-feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Estudo Direcionado</span>
+                        </div>
+                        <div class="nr-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Segurança do Trabalho</span>
+                        </div>
+                    </div>
+                    <button class="nr-start-btn" onclick="sortearNR()">
+                        <i class="fas fa-dice"></i>
+                        Sortear NR do Dia
+                    </button>
+                </div>
+
+                <div class="nr-content" id="nr-content" style="display: none;">
+                    <div class="nr-card">
+                        <div class="nr-header">
+                            <div class="nr-number" id="nr-number">NR-01</div>
+                            <div class="nr-status">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Vigente</span>
+                            </div>
+                        </div>
+                        <div class="nr-body">
+                            <h3 class="nr-title" id="nr-title">Título da NR</h3>
+                            <div class="nr-description">
+                                <p>Esta é a sua NR do dia para estudo! Clique no link abaixo para acessar o conteúdo completo no site oficial do Ministério do Trabalho e Emprego.</p>
+                            </div>
+                            <div class="nr-actions">
+                                <a href="#" class="nr-link-btn" id="nr-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Acessar NR Completa
+                                </a>
+                                <button class="nr-new-btn" onclick="sortearNR()">
+                                    <i class="fas fa-redo"></i>
+                                    Sortear Nova NR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Criadores Section -->
+    <section id="criadores" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CRIADORES DO PROJETO</h2>
+                <p class="section-subtitle">Equipe responsável pelo desenvolvimento desta solução</p>
+            </div>
+            
+            <div class="criadores-content">
+                <div class="coordenadora">
+                    <div class="coord-header">
+                        <i class="fas fa-user-tie"></i>
+                        <h3> Coordenadora</h3>
+                    </div>
+                    <div class="coord-info">
+                        <h4>Ruth Maria Rocha Ribeiro</h4>
+                        <p>Coordenadora do curso Química</p>
+                    </div>
+                </div>
+                
+                <div class="professora">
+                    <div class="prof-header">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3> Professora do curso Segurança do Trabalho</h3>
+                    </div>
+                    <div class="prof-info">
+                        <h4>Sylmara Correa Monteiro</h4>
+                        <p>Professora</p>
+                    </div>
+                </div>
+                
+                <div class="estudantes">
+                    <h3> Estudantes Participantes</h3>
+                    <div class="estudantes-grid">
+                        <div class="estudante-item">Alex</div>
+                        <div class="estudante-item">Alexsandra</div>
+                        <div class="estudante-item">Ana Paula</div>
+                        <div class="estudante-item">David</div>
+                        <div class="estudante-item">Fernando Cesar</div>
+                        <div class="estudante-item">Ignus Felipe</div>
+                        <div class="estudante-item">Sara</div>
+                        <div class="estudante-item">Vanderley</div>
+                        <div class="estudante-item">Erick Henrique</div>
+                        <div class="estudante-item">Erika Vivianny</div>
+                        <div class="estudante-item">Jeferson</div>
+                    </div>
+                </div>
+                
+                <div class="instituicao">
+                    <p>Este projeto representa o comprometimento com Instituto Federal do Norte de Minas Gerais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusão Section -->
+    <section class="section conclusao-section">
+        <div class="container">
+            <div class="conclusao-content">
+                <h2>ÁGUA LIMPA É SAÚDE E DIGNIDADE</h2>
+                <p>Com conhecimento técnico, materiais simples e educação, é possível garantir água potável para comunidades rurais, promover a saúde pública e atender à ODS 6.</p>
+                <div class="conclusao-highlight">
+                    <i class="fas fa-heart"></i>
+                    <span>Esse projeto mostra que ações locais podem gerar grandes transformações sociais.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="section contato-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">DÚVIDAS? ENTRE EM CONTATO</h2>
+                <p class="section-subtitle">Estamos aqui para ajudar com suas questões sobre água potável</p>
+            </div>
+            
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email para Suporte</h3>
+                            <p>ods6suport@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h3>Instituição</h3>
+                            <p>Instituto Federal do Norte de Minas Gerais</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>Equipe</h3>
+                            <p>Cursos Técnicos em Química e Segurança do Trabalho</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ODS6</h3>
+                    <p>Água Potável e Saneamento</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#problema">O Problema</a></li>
+                            <li><a href="#quimica">Química</a></li>
+                            <li><a href="#solucoes">Soluções</a></li>
+                            <li><a href="#quiz">Quiz</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <p>ods6suport@gmail.com</p>
+                        <p>Instituto Federal do Norte de Minas Gerais</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ODS6 - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Quiz: Água Potável e Saneamento</h3>
+                <button class="close-modal" onclick="closeQuiz()">×</button>
+            </div>
+            <div class="quiz-body">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quiz-progress"></div>
+                    </div>
+                    <span id="quiz-counter">1/10</span>
+                </div>
+                <div class="quiz-question" id="quiz-question"></div>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div class="quiz-controls">
+                    <button class="quiz-btn" id="quiz-next" onclick="nextQuestion()" disabled>Próxima Pergunta</button>
+                </div>
+                <div class="quiz-result" id="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js">// Quiz Data - Perguntas sobre água potável e saneamento
+const quizData = [
+    {
+        question: "Qual é o principal objetivo da ODS 6?",
+        options: [
+            "Garantir disponibilidade e manejo sustentável da água e saneamento para todos",
+            "Reduzir a poluição do ar nas cidades",
+            "Promover energia limpa e acessível",
+            "Combater as mudanças climáticas"
+        ],
+        correct: 0,
+        explanation: "A ODS 6 tem como objetivo garantir a disponibilidade e o manejo sustentável da água e saneamento para todos até 2030."
+    },
+    {
+        question: "Quais são os principais contaminantes encontrados em água de poços artesianos?",
+        options: [
+            "Apenas bactérias",
+            "Coliformes fecais, metais pesados, pH inadequado e alta turbidez",
+            "Somente metais pesados",
+            "Apenas problemas de pH"
+        ],
+        correct: 1,
+        explanation: "A água de poços pode conter diversos contaminantes: coliformes fecais, metais pesados, pH inadequado e alta turbidez, todos prejudiciais à saúde."
+    },
+    {
+        question: "Qual material filtrante é mais eficaz para remover metais pesados da água?",
+        options: [
+            "Areia comum",
+            "Carvão ativado",
+            "Zeólita",
+            "Terra de automassa"
+        ],
+        correct: 2,
+        explanation: "A zeólita é um mineral natural com propriedades excepcionais de adsorção, sendo muito eficaz na remoção de metais pesados e amônia da água."
+    },
+    {
+        question: "Qual EPI é essencial para proteger os olhos durante análises de água?",
+        options: [
+            "Máscara PFF2",
+            "Óculos de proteção",
+            "Luvas de borracha",
+            "Touca descartável"
+        ],
+        correct: 1,
+        explanation: "Os óculos de proteção são essenciais para evitar respingos de água contaminada ou reagentes químicos nos olhos durante as análises."
+    },
+    {
+        question: "Qual é o tempo máximo recomendado para transporte de amostras de água?",
+        options: [
+            "2 horas",
+            "4 horas",
+            "6 horas",
+            "8 horas"
+        ],
+        correct: 2,
+        explanation: "O transporte de amostras deve ser feito em até 6 horas, mantendo-as refrigeradas para preservar suas características originais."
+    },
+    {
+        question: "Qual é a função principal do carvão ativado no filtro?",
+        options: [
+            "Filtrar sedimentos grandes",
+            "Remover metais pesados",
+            "Reter impurezas orgânicas e melhorar sabor",
+            "Ajustar o pH da água"
+        ],
+        correct: 2,
+        explanation: "O carvão ativado tem alta capacidade de adsorção, sendo eficaz na remoção de impurezas orgânicas, cloro e melhoria do sabor da água."
+    },
+    {
+        question: "Por que é importante usar EPIs durante todo o processo?",
+        options: [
+            "Apenas para seguir regulamentos",
+            "Para proteger contra contaminação biológica e química",
+            "Somente para impressionar os clientes",
+            "Não é necessário usar EPIs"
+        ],
+        correct: 1,
+        explanation: "Os EPIs são fundamentais para proteger o técnico contra contaminação por agentes biológicos, químicos e físicos presentes na água e materiais."
+    },
+    {
+        question: "Qual é o pH ideal para água potável?",
+        options: [
+            "5,0 a 6,0",
+            "6,0 a 9,5",
+            "10,0 a 12,0",
+            "3,0 a 5,0"
+        ],
+        correct: 1,
+        explanation: "Segundo a ANVISA, o pH da água potável deve estar entre 6,0 e 9,5 para ser considerada adequada para consumo humano."
+    },
+    {
+        question: "Qual material é usado como barreira natural final no filtro?",
+        options: [
+            "Areia comum",
+            "Carvão ativado",
+            "Zeólita",
+            "Terra de automassa"
+        ],
+        correct: 3,
+        explanation: "A terra de automassa atua como barreira natural final, proporcionando uma filtração adicional e polimento da água."
+    },
+    {
+        question: "Qual é o principal benefício social do projeto de filtração?",
+        options: [
+            "Reduzir custos de energia",
+            "Garantir água segura para famílias rurais",
+            "Aumentar a produção agrícola",
+            "Melhorar o transporte público"
+        ],
+        correct: 1,
+        explanation: "O principal benefício é garantir acesso à água potável segura para famílias rurais, promovendo saúde, dignidade e qualidade de vida."
+    }
+];
+
+// Variáveis globais do quiz
+let currentQuestion = 0;
+let score = 0;
+let userAnswers = [];
+let isQuizActive = false;
+
+// Navegação suave
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling para links de navegação
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Toggle do menu mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+    }
+
+    // Highlight do menu ativo
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPos = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (navLink) navLink.classList.add('active');
+            }
+        });
+    });
+});
+
+// Função para rolar até o quiz inline
+function scrollToInlineQuiz() {
+    const quizSection = document.getElementById('quiz');
+    if (quizSection) {
+        quizSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Função para iniciar o quiz inline
+function startInlineQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    userAnswers = [];
+    isQuizActive = true;
+
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizContent = document.getElementById('quiz-content');
+    const quizResult = document.getElementById('quiz-result-inline');
+
+    if (quizIntro) quizIntro.style.display = 'none';
+    if (quizContent) quizContent.style.display = 'block';
+    if (quizResult) quizResult.style.display = 'none';
+
+    displayInlineQuestion();
+}
+
+// Função para exibir pergunta inline
+function displayInlineQuestion() {
+    const questionElement = document.getElementById('quiz-question-inline');
+    const optionsElement = document.getElementById('quiz-options-inline');
+    const progressElement = document.getElementById('quiz-progress-inline');
+    const counterElement = document.getElementById('quiz-counter-inline');
+    const nextButton = document.getElementById('quiz-next-inline');
+
+    if (!questionElement || !optionsElement) return;
+
+    const question = quizData[currentQuestion];
+    
+    questionElement.innerHTML = `<h4>Pergunta ${currentQuestion + 1}</h4><p>${question.question}</p>`;
+    
+    optionsElement.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'quiz-option';
+        optionDiv.innerHTML = `
+            <input type="radio" id="option-inline-${index}" name="quiz-option-inline" value="${index}">
+            <label for="option-inline-${index}">${option}</label>
+        `;
+        optionsElement.appendChild(optionDiv);
+    });
+
+    // Atualizar progresso
+    const progress = ((currentQuestion + 1) / quizData.length) * 100;
+    if (progressElement) progressElement.style.width = `${progress}%`;
+    if (counterElement) counterElement.textContent = `${currentQuestion + 1}/${quizData.length}`;
+
+    // Event listeners para opções
+    const radioButtons = optionsElement.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (nextButton) nextButton.disabled = false;
+        });
+    });
+
+    if (nextButton) {
+        nextButton.disabled = true;
+        nextButton.textContent = currentQuestion === quizData.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta';
+    }
+}
+
+// Função para próxima pergunta inline
+function nextInlineQuestion() {
+    const selectedOption = document.querySelector('input[name="quiz-option-inline"]:checked');
+    if (!selectedOption) return;
+
+    const answer = parseInt(selectedOption.value);
+    userAnswers.push(answer);
+
+    if (answer === quizData[currentQuestion].correct) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+        displayInlineQuestion();
+    } else {
+        showInlineResult();
+    }
+}
+
+// Função para mostrar resultado inline
+function showInlineResult() {
+    const quizContent = document.getElementById('quiz-content');
+    const quizResult = document.getElementById('quiz-result-inline');
+
+    if (quizContent) quizContent.style.display = 'none';
+    if (quizResult) {
+        quizResult.style.display = 'block';
+        
+        const percentage = Math.round((score / quizData.length) * 100);
+        let resultClass = 'result-low';
+        let resultMessage = 'Continue estudando!';
+        
+        if (percentage >= 80) {
+            resultClass = 'result-high';
+            resultMessage = 'Excelente conhecimento!';
+        } else if (percentage >= 60) {
+            resultClass = 'result-medium';
+            resultMessage = 'Bom conhecimento!';
+        }
+
+        let resultHTML = `
+            <div class="quiz-result-content ${resultClass}">
+                <div class="result-header">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Quiz Finalizado!</h3>
+                </div>
+                <div class="result-score">
+                    <div class="score-circle">
+                        <span class="score-number">${score}/${quizData.length}</span>
+                        <span class="score-percentage">${percentage}%</span>
+                    </div>
+                    <p class="result-message">${resultMessage}</p>
+                </div>
+                <div class="result-details">
+                    <h4>Respostas Detalhadas:</h4>
+        `;
+
+        quizData.forEach((question, index) => {
+            const userAnswer = userAnswers[index];
+            const isCorrect = userAnswer === question.correct;
+            
+            resultHTML += `
+                <div class="answer-review ${isCorrect ? 'correct' : 'incorrect'}">
+                    <div class="question-review">
+                        <strong>Pergunta ${index + 1}:</strong> ${question.question}
+                    </div>
+                    <div class="answer-info">
+                        <div class="user-answer">
+                            <i class="fas ${isCorrect ? 'fa-check' : 'fa-times'}"></i>
+                            <span>Sua resposta: ${question.options[userAnswer]}</span>
+                        </div>
+                        ${!isCorrect ? `<div class="correct-answer">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Resposta correta: ${question.options[question.correct]}</span>
+                        </div>` : ''}
+                        <div class="explanation">
+                            <i class="fas fa-info-circle"></i>
+                            <span>${question.explanation}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        resultHTML += `
+                </div>
+                <div class="result-actions">
+                    <button class="quiz-btn" onclick="restartInlineQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Refazer Quiz
+                    </button>
+                    <button class="quiz-btn quiz-btn-secondary" onclick="scrollToTop()">
+                        <i class="fas fa-arrow-up"></i>
+                        Voltar ao Topo
+                    </button>
+                </div>
+            </div>
+        `;
+
+        quizResult.innerHTML = resultHTML;
+    }
+}
+
+// Função para reiniciar quiz inline
+function restartInlineQuiz() {
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizContent = document.getElementById('quiz-content');
+    const quizResult = document.getElementById('quiz-result-inline');
+
+    if (quizIntro) quizIntro.style.display = 'block';
+    if (quizContent) quizContent.style.display = 'none';
+    if (quizResult) quizResult.style.display = 'none';
+
+    currentQuestion = 0;
+    score = 0;
+    userAnswers = [];
+    isQuizActive = false;
+}
+
+// Função para rolar para o topo
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Funções do quiz modal (mantidas para compatibilidade)
+function openQuiz() {
+    const modal = document.getElementById('quiz-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        startQuiz();
+    }
+}
+
+function closeQuiz() {
+    const modal = document.getElementById('quiz-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        currentQuestion = 0;
+        score = 0;
+        userAnswers = [];
+        isQuizActive = false;
+    }
+}
+
+function startQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    userAnswers = [];
+    isQuizActive = true;
+    displayQuestion();
+}
+
+function displayQuestion() {
+    const questionElement = document.getElementById('quiz-question');
+    const optionsElement = document.getElementById('quiz-options');
+    const progressElement = document.getElementById('quiz-progress');
+    const counterElement = document.getElementById('quiz-counter');
+    const nextButton = document.getElementById('quiz-next');
+    const resultElement = document.getElementById('quiz-result');
+
+    if (!questionElement || !optionsElement) return;
+
+    if (resultElement) resultElement.style.display = 'none';
+
+    const question = quizData[currentQuestion];
+    
+    questionElement.innerHTML = `<h4>Pergunta ${currentQuestion + 1}</h4><p>${question.question}</p>`;
+    
+    optionsElement.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'quiz-option';
+        optionDiv.innerHTML = `
+            <input type="radio" id="option-${index}" name="quiz-option" value="${index}">
+            <label for="option-${index}">${option}</label>
+        `;
+        optionsElement.appendChild(optionDiv);
+    });
+
+    // Atualizar progresso
+    const progress = ((currentQuestion + 1) / quizData.length) * 100;
+    if (progressElement) progressElement.style.width = `${progress}%`;
+    if (counterElement) counterElement.textContent = `${currentQuestion + 1}/${quizData.length}`;
+
+    // Event listeners para opções
+    const radioButtons = optionsElement.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (nextButton) nextButton.disabled = false;
+        });
+    });
+
+    if (nextButton) {
+        nextButton.disabled = true;
+        nextButton.textContent = currentQuestion === quizData.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta';
+    }
+}
+
+function nextQuestion() {
+    const selectedOption = document.querySelector('input[name="quiz-option"]:checked');
+    if (!selectedOption) return;
+
+    const answer = parseInt(selectedOption.value);
+    userAnswers.push(answer);
+
+    if (answer === quizData[currentQuestion].correct) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+        displayQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    const questionElement = document.getElementById('quiz-question');
+    const optionsElement = document.getElementById('quiz-options');
+    const nextButton = document.getElementById('quiz-next');
+    const resultElement = document.getElementById('quiz-result');
+
+    if (questionElement) questionElement.style.display = 'none';
+    if (optionsElement) optionsElement.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
+    
+    if (resultElement) {
+        resultElement.style.display = 'block';
+        
+        const percentage = Math.round((score / quizData.length) * 100);
+        let resultClass = 'result-low';
+        let resultMessage = 'Continue estudando!';
+        
+        if (percentage >= 80) {
+            resultClass = 'result-high';
+            resultMessage = 'Excelente conhecimento!';
+        } else if (percentage >= 60) {
+            resultClass = 'result-medium';
+            resultMessage = 'Bom conhecimento!';
+        }
+
+        let resultHTML = `
+            <div class="quiz-result-content ${resultClass}">
+                <div class="result-header">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Quiz Finalizado!</h3>
+                </div>
+                <div class="result-score">
+                    <div class="score-circle">
+                        <span class="score-number">${score}/${quizData.length}</span>
+                        <span class="score-percentage">${percentage}%</span>
+                    </div>
+                    <p class="result-message">${resultMessage}</p>
+                </div>
+                <div class="result-actions">
+                    <button class="quiz-btn" onclick="startQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Refazer Quiz
+                    </button>
+                    <button class="quiz-btn quiz-btn-secondary" onclick="closeQuiz()">
+                        <i class="fas fa-times"></i>
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        `;
+
+        resultElement.innerHTML = resultHTML;
+    }
+}
+
+// Event listeners para fechar modal clicando fora
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('quiz-modal');
+    if (modal && e.target === modal) {
+        closeQuiz();
+    }
+});
+
+
+
+// NR do Dia - Dados das Normas Regulamentadoras
+const nrsData = [
+    {
+        "title": "NR-1 - DISPOSIÇÕES GERAIS E GERENCIAMENTO DE RISCOS OCUPACIONAIS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-1-nr-1"
+    },
+    {
+        "title": "NR-2 - INSPEÇÃO PRÉVIA (REVOGADA)",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-2-nr-2"
+    },
+    {
+        "title": "NR-3 - EMBARGO E INTERDIÇÃO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-3-nr-3"
+    },
+    {
+        "title": "NR-4 - SERVIÇOS ESPECIALIZADOS EM SEGURANÇA E EM MEDICINA DO TRABALHO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-4-nr-4"
+    },
+    {
+        "title": "NR-5 - COMISSÃO INTERNA DE PREVENÇÃO DE ACIDENTES E DE ASSÉDIO - CIPA",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-5-nr-5"
+    },
+    {
+        "title": "NR-6 - EQUIPAMENTO DE PROTEÇÃO INDIVIDUAL - EPI",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-6-nr-6"
+    },
+    {
+        "title": "NR-7 - PROGRAMA DE CONTROLE MÉDICO DE SAÚDE OCUPACIONAL - PCMSO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-7-nr-7"
+    },
+    {
+        "title": "NR-8 - EDIFICAÇÕES",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-8-nr-8"
+    },
+    {
+        "title": "NR-9 - AVALIAÇÃO E CONTROLE DAS EXPOSIÇÕES OCUPACIONAIS A AGENTES FÍSICOS, QUÍMICOS E BIOLÓGICOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-9-nr-9"
+    },
+    {
+        "title": "NR-10 - SEGURANÇA EM INSTALAÇÕES E SERVIÇOS EM ELETRICIDADE",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-10-nr-10"
+    },
+    {
+        "title": "NR-11 - TRANSPORTE, MOVIMENTAÇÃO, ARMAZENAGEM E MANUSEIO DE MATERIAIS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-11-nr-11"
+    },
+    {
+        "title": "NR-12 - SEGURANÇA NO TRABALHO EM MÁQUINAS E EQUIPAMENTOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-12-nr-12"
+    },
+    {
+        "title": "NR-13 - CALDEIRAS, VASOS DE PRESSÃO E TUBULAÇÕES, E GERENCIAMENTO DE RISCOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-13-nr-13"
+    },
+    {
+        "title": "NR-14 - FORNOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-14-nr-14"
+    },
+    {
+        "title": "NR-15 - ATIVIDADES E OPERAÇÕES INSALUBRES",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-15-nr-15"
+    },
+    {
+        "title": "NR-16 - ATIVIDADES E OPERAÇÕES PERIGOSAS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-16-nr-16"
+    },
+    {
+        "title": "NR-17 - ERGONOMIA",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-17-nr-17"
+    },
+    {
+        "title": "NR-18 - SEGURANÇA E SAÚDE NO TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-18-nr-18"
+    },
+    {
+        "title": "NR-19 - EXPLOSIVOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-19-nr-19"
+    },
+    {
+        "title": "NR-20 - SEGURANÇA E SAÚDE NO TRABALHO COM INFLAMÁVEIS E COMBUSTÍVEIS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-20-nr-20"
+    },
+    {
+        "title": "NR-21 - TRABALHOS A CÉU ABERTO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-21-nr-21"
+    },
+    {
+        "title": "NR-22 - SEGURANÇA E SAÚDE OCUPACIONAL NA MINERAÇÃO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-22-nr-22"
+    },
+    {
+        "title": "NR-23 - PROTEÇÃO CONTRA INCÊNDIOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-23-nr-23"
+    },
+    {
+        "title": "NR-24 - CONDIÇÕES SANITÁRIAS E DE CONFORTO NOS LOCAIS DE TRABALHO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-24-nr-24"
+    },
+    {
+        "title": "NR-25 - RESÍDUOS INDUSTRIAIS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-25-nr-25"
+    },
+    {
+        "title": "NR-26 - SINALIZAÇÃO DE SEGURANÇA",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-26-nr-26"
+    },
+    {
+        "title": "NR-27 - REGISTRO PROFISSIONAL DO TÉCNICO DE SEGURANÇA DO TRABALHO (REVOGADA)",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-27-nr-27"
+    },
+    {
+        "title": "NR-28 - FISCALIZAÇÃO E PENALIDADES",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-28-nr-28"
+    },
+    {
+        "title": "NR-29 - NORMA REGULAMENTADORA DE SEGURANÇA E SAÚDE NO TRABALHO PORTUÁRIO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-29-nr-29"
+    },
+    {
+        "title": "NR-30 - SEGURANÇA E SAÚDE NO TRABALHO AQUAVIÁRIO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-30-nr-30"
+    },
+    {
+        "title": "NR-31 - SEGURANÇA E SAÚDE NO TRABALHO NA AGRICULTURA, PECUÁRIA SILVICULTURA, EXPLORAÇÃO FLORESTAL E AQUICULTURA",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-31-nr-31"
+    },
+    {
+        "title": "NR-32 - SEGURANÇA E SAÚDE NO TRABALHO EM SERVIÇOS DE SAÚDE",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-32-nr-32"
+    },
+    {
+        "title": "NR-33 - SEGURANÇA E SAÚDE NOS TRABALHOS EM ESPAÇOS CONFINADOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-33-nr-33"
+    },
+    {
+        "title": "NR-34 - CONDIÇÕES E MEIO AMBIENTE DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO, REPARAÇÃO E DESMONTE NAVAL",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-34-nr-34"
+    },
+    {
+        "title": "NR-35 - TRABALHO EM ALTURA",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-35-nr-35"
+    },
+    {
+        "title": "NR-36 - SEGURANÇA E SAÚDE NO TRABALHO EM EMPRESAS DE ABATE E PROCESSAMENTO DE CARNES E DERIVADOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-36-nr-36"
+    },
+    {
+        "title": "NR-37 - SEGURANÇA E SAÚDE EM PLATAFORMAS DE PETRÓLEO",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/ctpp-nrs/norma-regulamentadora-no-37-nr-37"
+    },
+    {
+        "title": "NR-38 - SEGURANÇA E SAÚDE NO TRABALHO NAS ATIVIDADES DE LIMPEZA URBANA E MANEJO DE RESÍDUOS SÓLIDOS",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-38-nr-38"
+    }
+];
+
+// Variável para armazenar a NR atual
+let currentNR = null;
+
+// Função para sortear uma NR aleatória
+function sortearNR() {
+    // Seleciona uma NR aleatória
+    const randomIndex = Math.floor(Math.random() * nrsData.length);
+    currentNR = nrsData[randomIndex];
+    
+    // Extrai o número da NR do título
+    const nrNumber = currentNR.title.match(/NR-(\d+)/)[0];
+    
+    // Verifica se é uma NR revogada
+    const isRevogada = currentNR.title.includes('REVOGADA');
+    
+    // Atualiza a interface
+    const nrIntro = document.getElementById('nr-intro');
+    const nrContent = document.getElementById('nr-content');
+    const nrCard = document.querySelector('.nr-card');
+    
+    if (nrIntro) nrIntro.style.display = 'none';
+    if (nrContent) nrContent.style.display = 'block';
+    
+    // Atualiza o conteúdo da NR
+    const nrNumberElement = document.getElementById('nr-number');
+    const nrTitleElement = document.getElementById('nr-title');
+    const nrLinkElement = document.getElementById('nr-link');
+    const nrStatusElement = document.querySelector('.nr-status');
+    
+    if (nrNumberElement) nrNumberElement.textContent = nrNumber;
+    if (nrTitleElement) nrTitleElement.textContent = currentNR.title;
+    if (nrLinkElement) nrLinkElement.href = currentNR.url;
+    
+    // Atualiza o status e estilo para NRs revogadas
+    if (nrCard) {
+        if (isRevogada) {
+            nrCard.classList.add('revogada');
+            if (nrStatusElement) {
+                nrStatusElement.innerHTML = '<i class="fas fa-times-circle"></i><span>Revogada</span>';
+            }
+        } else {
+            nrCard.classList.remove('revogada');
+            if (nrStatusElement) {
+                nrStatusElement.innerHTML = '<i class="fas fa-check-circle"></i><span>Vigente</span>';
+            }
+        }
+    }
+    
+    // Adiciona animação de entrada
+    if (nrContent) {
+        nrContent.style.opacity = '0';
+        nrContent.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            nrContent.style.transition = 'all 0.5s ease';
+            nrContent.style.opacity = '1';
+            nrContent.style.transform = 'translateY(0)';
+        }, 100);
+    }
+    
+    // Rola suavemente para a seção da NR
+    const nrSection = document.getElementById('nr-do-dia');
+    if (nrSection) {
+        nrSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+}
+
+// Função para reiniciar a seção NR do Dia
+function reiniciarNR() {
+    const nrIntro = document.getElementById('nr-intro');
+    const nrContent = document.getElementById('nr-content');
+    
+    if (nrIntro) nrIntro.style.display = 'block';
+    if (nrContent) nrContent.style.display = 'none';
+    
+    currentNR = null;
+}
+
+// Função para rolar até a seção NR do Dia
+function scrollToNRDoDia() {
+    const nrSection = document.getElementById('nr-do-dia');
+    if (nrSection) {
+        nrSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Adiciona event listeners quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    // Adiciona o link NR do Dia ao menu de navegação se ainda não existir
+    const navMenu = document.querySelector('.nav-menu');
+    const nrNavLink = document.querySelector('.nav-link[href="#nr-do-dia"]');
+    
+    if (navMenu && !nrNavLink) {
+        const quizNavItem = document.querySelector('.nav-link[href="#quiz"]').parentElement;
+        const nrNavItem = document.createElement('li');
+        nrNavItem.innerHTML = '<a href="#nr-do-dia" class="nav-link nr-nav">NR do Dia</a>';
+        
+        // Insere após o item do quiz
+        if (quizNavItem.nextSibling) {
+            navMenu.insertBefore(nrNavItem, quizNavItem.nextSibling);
+        } else {
+            navMenu.appendChild(nrNavItem);
+        }
+    }
+    
+    // Adiciona smooth scrolling para o link NR do Dia
+    const nrNavLinks = document.querySelectorAll('a[href="#nr-do-dia"]');
+    nrNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToNRDoDia();
+        });
+    });
+});
+
+// Função para obter estatísticas das NRs
+function getNRStats() {
+    const vigentes = nrsData.filter(nr => !nr.title.includes('REVOGADA')).length;
+    const revogadas = nrsData.filter(nr => nr.title.includes('REVOGADA')).length;
+    const total = nrsData.length;
+    
+    return {
+        total: total,
+        vigentes: vigentes,
+        revogadas: revogadas
+    };
+}
+
+// Função para buscar NR por número
+function buscarNRPorNumero(numero) {
+    return nrsData.find(nr => nr.title.includes(`NR-${numero}`));
+}
+
+// Função para obter NRs por categoria (exemplo: EPIs, Segurança, etc.)
+function getNRsPorCategoria() {
+    const categorias = {
+        'Disposições Gerais': ['NR-1', 'NR-2', 'NR-3', 'NR-28'],
+        'Serviços e Comissões': ['NR-4', 'NR-5'],
+        'EPIs e Medicina': ['NR-6', 'NR-7'],
+        'Ambiente de Trabalho': ['NR-8', 'NR-9', 'NR-24'],
+        'Segurança em Atividades': ['NR-10', 'NR-11', 'NR-12', 'NR-13', 'NR-14'],
+        'Atividades Especiais': ['NR-15', 'NR-16', 'NR-17'],
+        'Setores Específicos': ['NR-18', 'NR-19', 'NR-20', 'NR-21', 'NR-22'],
+        'Proteção e Sinalização': ['NR-23', 'NR-25', 'NR-26'],
+        'Trabalho Portuário e Aquaviário': ['NR-29', 'NR-30'],
+        'Setores Rurais e Saúde': ['NR-31', 'NR-32'],
+        'Trabalhos Especiais': ['NR-33', 'NR-34', 'NR-35', 'NR-36', 'NR-37', 'NR-38']
+    };
+    
+    return categorias;
+}
+</script>
+</body>
+</html>
+
+
